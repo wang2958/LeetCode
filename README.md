@@ -1,2 +1,2 @@
-# leetcode
-力扣(leetcode)解题
+# LeetCode
+力扣(LeetCode)解题
