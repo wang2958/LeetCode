@@ -1,4 +1,4 @@
-﻿namespace LeetCodeConsole
+﻿namespace LeetCodeTest
 { 
     public class _1_TwoSum
     {
