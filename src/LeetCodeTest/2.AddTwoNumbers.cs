@@ -78,8 +78,7 @@
         /// <returns></returns> 
         public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
-            ListNode result = null;
-            ListNode resultPrv = null;
+            ListNode head = null, tail = null;
 
             var currentl1 = l1;
             var currentl2 = l2;
@@ -90,27 +89,26 @@
                 var l1Value = currentl1?.val ?? 0;
                 var l2Value = currentl2?.val ?? 0;
                 var currentValue = l1Value + l2Value + (isNextIncrement ? 1 : 0);
+                 
+                if (head == null)
+                {
+                    head = new ListNode(currentValue % 10);
+                    tail = head;
+                }
+                else
+                {
+                    tail.next = new ListNode(currentValue % 10);
+                    tail = tail.next;
+                }
 
                 isNextIncrement = currentValue >= 10;
                 currentl1 = currentl1?.next;
                 currentl2 = currentl2?.next;
-
-                currentValue = currentValue % 10;
-                if (result == null)
-                {
-                    result = new ListNode(currentValue, null);
-                    resultPrv = result;
-                }
-                else
-                {
-                    resultPrv.next = new ListNode(currentValue, null);
-                    resultPrv = resultPrv.next;
-                }
             }
 
-            if (isNextIncrement) resultPrv.next = new ListNode(1);
+            if (isNextIncrement) tail.next = new ListNode(1);
 
-            return result;
+            return head;
         }
 
         public class ListNode
