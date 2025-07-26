@@ -42,6 +42,19 @@
         }
 
         /// <summary>
+        /// Input: s = " "
+        /// Output: 0
+        /// </summary>
+        [Fact]
+        public void Test4()
+        {
+            var s = " ";
+            var expected = 1;
+            var result = LengthOfLongestSubstring(s);
+            Assert.Equal(expected, result);
+        }
+
+        /// <summary>
         /// 给定一个字符串 s，请你找出其中不含有重复字符的 最长 子串 的长度。
         /// Given a string s, find the length of the longest substring without duplicate characters.
         /// </summary> 
@@ -65,7 +78,7 @@
                 }
                 right++;
             }
-            return maxLength;
+            return Math.Max(maxLength, right - left);
         }
     }
 }
