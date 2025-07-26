@@ -42,13 +42,30 @@
         }
 
         /// <summary>
-        /// 给定一个字符串 s ，请你找出其中不含有重复字符的 最长 子串 的长度。
+        /// 给定一个字符串 s，请你找出其中不含有重复字符的 最长 子串 的长度。
         /// Given a string s, find the length of the longest substring without duplicate characters.
         /// </summary> 
         /// <returns></returns> 
         public int LengthOfLongestSubstring(string s)
         {
-
+            var left = 0;
+            var right = 0;
+            var chatArray = s.ToArray();
+            var maxLength = 0;
+            while (right < chatArray.Length)
+            {
+                var target = chatArray[right];
+                for (int i = left; i < right; i++)
+                {
+                    if (target == chatArray[i])
+                    {
+                        maxLength = Math.Max(maxLength, right - left);
+                        left = i + 1;
+                    }
+                }
+                right++;
+            }
+            return maxLength;
         }
     }
 }
